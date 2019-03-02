@@ -3,6 +3,10 @@
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+a {
+  text-decoration: none;
+}
+
 .text-center {
   text-align: center;
 }
@@ -13,7 +17,7 @@
   font-size: 1.5em;
 
   width: 100%;
-  /* background: #d81b60; */
+  /* background: gray; */
   color: black;
 
   box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08),
@@ -27,6 +31,42 @@
 .decision-button:hover {
   box-shadow: 0 1px 3px 1px rgba(60, 64, 67, 0.2),
     0 2px 8px 4px rgba(60, 64, 67, 0.1);
+}
+
+.main-text {
+  font-size: 1.5em;
+  font-weight: lighter;
+  line-height: 1.5em;
+}
+
+.main-text + ul {
+  font-size: 1.5em;
+  font-weight: lighter;
+  line-height: 1.5em;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100vh;
+  border: 0;
+  resize: none;
+  box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08),
+    0 1px 3px 1px rgba(60, 64, 67, 0.16);
+
+  padding: 3vh;
+
+  font-size: 1.5em;
+  font-weight: lighter;
+  line-height: 1.5em;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
 /*

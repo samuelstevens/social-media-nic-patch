@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <title>Bored Board</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <link rel="stylesheet" href="/css/site.css" />
     <link rel="stylesheet" href="/css/bootstrap-grid.min.css" />
   </head>
@@ -22,10 +21,14 @@
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-4 col text-center">
-          <button class="decision-button">Less than a minute</button>
+          <a href="/be-bored.html">
+            <button class="decision-button">Less than a minute</button>
+          </a>
         </div>
         <div class="col-md-4 col text-center">
-          <button class="decision-button">A minute to 5 minutes</button>
+          <a href="/short" id="short">
+            <button class="decision-button">A minute to 5 minutes</button>
+          </a>
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-2"></div>
@@ -33,10 +36,25 @@
           <button class="decision-button">5 to 15 minutes</button>
         </div>
         <div class="col-md-4 col text-center">
-          <button class="decision-button">More than 15 minutes</button>
+          <a href="/long" id="long">
+            <button class="decision-button">More than 15 minutes</button>
+          </a>
         </div>
         <div class="col-md-2"></div>
       </div>
     </div>
+
+    <script>
+      var shortActivities = [""];
+      var longActivities = ["/journaling.html", ""];
+
+      document.getElementById("short").href =
+        "/short" +
+        shortActivities[Math.floor(Math.random() * shortActivities.length)];
+
+      document.getElementById("long").href =
+        "/long" +
+        longActivities[Math.floor(Math.random() * longActivities.length)];
+    </script>
   </body>
 </html>
