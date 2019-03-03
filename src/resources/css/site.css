@@ -10,13 +10,18 @@ a {
 
 body {
   background-color: #fafafa;
+  margin: 0;
 }
 
 .header {
   background-color: white;
-  border-radius: 0.2em;
   color: black;
   border-bottom: 1px solid #cccccc;
+  width: 100vw;
+}
+
+.header-link {
+  font-weight: lighter;
 }
 
 .footer {
