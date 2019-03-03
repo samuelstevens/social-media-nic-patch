@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Be Bored</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/resources/css/site.css" />
+    <link rel="stylesheet" href="/resources/css/bootstrap-grid.min.css" />
+    <script type="text/javascript" src="/resources/js/site.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto">
+          <div id="js-header"><p>The Bored Board</p></div>
+        </div>
+        <div class="col-auto"><p>|</p></div>
+        <div class="col">
+          <a href="/long"><p>All Long Activities</p></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center"><h1>Journaling</h1></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col">
+          <p class="main-text">
+            Journaling has a <em>plethora</em> of
+            <a
+              href="https://psychcentral.com/lib/the-health-benefits-of-journaling/"
+              >health benefits</a
+            >. And it's not just for health. It (anecdotally) is a huge booster
+            to
+            <a
+              href="https://medium.com/thrive-global/start-journaling-54ea2edb104"
+              >productivity</a
+            >
+            too. It's simple, it's cheap, it's immediate. Let's try it out, and
+            see if it treats us better than
+            <span class="addictive-platform">Facebook</span>.
+          </p>
+          <p class="main-text">
+            Typically, writing it by hand is better than typing, but we're not
+            here to be perfect. We're here to be just a little bit better than
+            before. So typing will do.
+          </p>
+          <p class="main-text">
+            It's going to be weird to go to a site to consume some content and
+            then end up writing, but this is healthy and helpful and
+            <em>puts you first</em>.
+          </p>
+
+          <a href="#privacy"><p>A note on privacy</p></a>
+
+          <textarea id="journal"></textarea>
+          <p class="main-text">
+            This will get easier over time. If you like it, I encourage you to
+            make it a more permanent part of your life.
+          </p>
+          <hr />
+          <h2 id="privacy">Privacy</h2>
+          <p class="main-text">
+            One of the main strengths of journaling is that it's private. Nobody
+            else will read what you write, so you can write whatever you want.
+            Here, I'm asking you to write it on the internet, a place so
+            notoriosly <strong>un</strong>-private that [add a metaphor here].
+          </p>
+          <p class="main-text">
+            I understand your concern. I really do. I don't record what's
+            written here. There's not even a button to submit the journal. I do
+            not want to invade your privacy. I also know it's not that easy to
+            believe me.
+          </p>
+          <p class="main-text">
+            But journaling is really good for you, and I would hate for you to
+            miss out on this activity because of privacy. So open up your
+            favorite notes app. Open up a physical journal, if you have one.
+            Write it somewhere, just <strong>write</strong>.
+          </p>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+    <script>
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1; //January is 0!
+      var yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = "0" + dd;
+      }
+
+      if (mm < 10) {
+        mm = "0" + mm;
+      }
+      today = mm + "/" + dd + "/" + yyyy;
+      document.getElementById("journal").innerHTML = today + '&#13;&#10;&#13;&#10';
+    </script>
+  </body>
+</html>

@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title>Bored Board</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/css/site.css" />
-    <link rel="stylesheet" href="/css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="/resources/css/site.css" />
+    <link rel="stylesheet" href="/resources/css/bootstrap-grid.min.css" />
   </head>
   <body>
     <div class="container">
@@ -33,7 +33,9 @@
         <div class="col-md-2"></div>
         <div class="col-md-2"></div>
         <div class="col-md-4 col text-center">
-          <button class="decision-button">5 to 15 minutes</button>
+          <a href="/medium" id="medium">
+            <button class="decision-button">5 to 15 minutes</button>
+          </a>
         </div>
         <div class="col-md-4 col text-center">
           <a href="/long" id="long">
@@ -45,12 +47,17 @@
     </div>
 
     <script>
-      var shortActivities = [""];
-      var longActivities = ["/journaling.html", ""];
+      var shortActivities = ["", "/meditation"];
+      var mediumActivities = ["", "/reading"];
+      var longActivities = ["", "/journaling"];
 
       document.getElementById("short").href =
         "/short" +
         shortActivities[Math.floor(Math.random() * shortActivities.length)];
+
+      document.getElementById("medium").href =
+        "/medium" +
+        mediumActivities[Math.floor(Math.random() * mediumActivities.length)];
 
       document.getElementById("long").href =
         "/long" +

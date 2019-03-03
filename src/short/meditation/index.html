@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Meditating</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/resources/css/site.css" />
+    <link rel="stylesheet" href="/resources/css/bootstrap-grid.min.css" />
+    <script type="text/javascript" src="/resources/js/site.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-auto">
+          <div id="js-header"><p>The Bored Board</p></div>
+        </div>
+        <div class="col-auto"><p>|</p></div>
+        <div class="col">
+          <a href="/short"><p>All Short Activities</p></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col text-center"><h1>Meditating</h1></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col">
+          <p class="main-text">
+            Meditating is awesome. Everyone says it, nobody does it, it's always
+            something that you know you <em>should</em> do. Well, you have a
+            couple minutes with nothing to do. Let's give it a shot.
+          </p>
+          <p class="main-text">
+            It has a huge range of
+            <a
+              href="https://www.webmd.com/balance/features/meditation-heals-body-and-mind#1"
+              >health benefits</a
+            >. The kicker for me, however, was thinking of it as exercise for my
+            mind. If we're all so concerned with running and swimming and
+            exercising my muscles and heart and all that, then shouldn't I do
+            the same thing for my mind?
+          </p>
+          <p class="main-text">
+            It's simple, it's free, it's immediate. Let's try it out, and see if
+            it treats us better than
+            <span class="addictive-platform">Facebook</span>.
+          </p>
+          <p class="main-text">
+            If you've never meditated before, it can be hard to start. I've
+            provided a very basic meditation "app" here with some basic prompts,
+            but there are more resources at the bottom of the
+            <a href="#resources">page</a>.
+          </p>
+          <div id="meditation-app">
+            <div class="play-button-container">
+              <div class="play-button-icon play" id="play-button"></div>
+            </div>
+          </div>
+          <hr />
+          <h2 id="resources">More Resources</h2>
+          <p class="main-text">
+            I personally use <a href="https://www.headspace.com/">Headspace</a>,
+            because they have a
+            <a href="https://www.headspace.com/studentplan">student plan</a> for
+            $10 a year. There are dozens of other good resources out there, and
+            I invite you to take a look for yourself.
+          </p>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+    <script>
+      var playButton = document.getElementById("play-button");
+      playButton.onclick = function() {
+        if (playButton.className === "play-button-icon pause") {
+          // PAUSE
+          playButton.className = "play-button-icon play";
+        } else {
+          playButton.className = "play-button-icon pause";
+          // PAUSE
+        }
+      };
+    </script>
+  </body>
+</html>

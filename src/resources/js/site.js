@@ -8,8 +8,11 @@ var load = function() {
 
   //
   var addictivePlatforms = ["Facebook", "Instagram", "Reddit", "Twitter"];
-  document.getElementById("addictive-platform").innerHTML =
-    addictivePlatforms[Math.floor(Math.random() * addictivePlatforms.length)];
+  var tags = document.getElementsByClassName("addictive-platform");
+  for (var i = 0; i < tags.length; i++) {
+    tags[i].innerHTML =
+      addictivePlatforms[Math.floor(Math.random() * addictivePlatforms.length)];
+  }
 };
 
 window.onload = load;
