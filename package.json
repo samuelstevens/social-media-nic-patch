@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "browser-sync start --server 'src' --files 'src' --ss  --reload-debounce 500",
-    "start:mobile": "browser-sync start --server 'src' --files 'src' --ss  --reload-debounce 500 --browser Safari"
+    "start:mobile": "browser-sync start --server 'src' --files 'src' --ss  --reload-debounce 500 --browser Safari",
+    "publish": "surge"
   },
   "keywords": [],
   "author": "",
