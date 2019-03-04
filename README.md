@@ -1,1 +1,1 @@
-https://www.browsersync.io/docs/command-line
+[Bored Board](https://bored-board.surge.sh)
