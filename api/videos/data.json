@@ -7,17 +7,17 @@
       {
         "question": "HERE IS A QUESTION?",
         "answers": ["Answer 1", "ANSWER 2", "ANSWER 3", "ANSWER 4"],
-        "correct": "ANSWER 1"
+        "correct": 0
       },
       {
         "question": "HERE IS A QUESTION?",
         "answers": ["ANSWER 1", "ANSWER 2", "ANSWER 3", "ANSWER 4"],
-        "correct": "ANSWER 1"
+        "correct": 4
       },
       {
         "question": "HERE IS A QUESTION?",
         "answers": ["ANSWER 1", "ANSWER 2", "ANSWER 3", "ANSWER 4"],
-        "correct": "ANSWER 1"
+        "correct": 3
       }
     ]
   }

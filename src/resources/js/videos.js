@@ -1,44 +1,49 @@
 "use strict";
 
 // probably want to get this from a server somewhere
-var videos = [
-  {
-    link: "https://www.youtube-nocookie.com/embed/MBRqu0YOH14",
-    channel: "Kurzgesagt",
-    title: "Optimistic Nihilism",
-    feedback: [
-      {
-        question: "HERE IS A QUESTION?",
-        answers: ["Answer 1", "ANSWER 2", "ANSWER 3", "ANSWER 4"],
-        correct: "ANSWER 1"
-      },
-      {
-        question: "HERE IS A QUESTION?",
-        answers: ["ANSWER 1", "ANSWER 2", "ANSWER 3", "ANSWER 4"],
-        correct: "ANSWER 1"
-      },
-      {
-        question: "HERE IS A QUESTION?",
-        answers: ["ANSWER 1", "ANSWER 2", "ANSWER 3", "ANSWER 4"],
-        correct: "ANSWER 1"
-      }
-    ]
-  }
-];
+// https://raw.githubusercontent.com/samuelstevens/social-media-nic-patch/master/api/videos/data.json
 
-var buildAnswer = function(answer) {
-  return '<div class="col-md-6 col-12"><div class="button button-sm">' + answer + "</div></div>";
+var getData = function(callback) {
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function() {
+    if (request.readyState === 4) {
+      if (request.status === 200) {
+        if (callback) callback(request);
+      } else {
+        console.log("Error");
+      }
+    }
+  };
+
+  request.open(
+    "GET",
+    "https://raw.githubusercontent.com/samuelstevens/social-media-nic-patch/master/api/videos/data.json"
+  );
+  request.send();
 };
 
-var buildQuestion = function(problem) {
+var buildAnswer = function(answer, questionIndex, answerIndex) {
+  return (
+    '<div class="col-md-6 col-12"><div class="button button-sm" onclick="submitAnswer(' +
+    questionIndex +
+    ", " +
+    answerIndex +
+    ')">' +
+    answer +
+    "</div></div>"
+  );
+};
+
+var buildQuestion = function(problem, problemIndex) {
   var html = "";
 
   // html += "<li>";
   html += '<p class="main-text">' + problem.question + '</p><div class="row">';
   for (var i = 0; i < problem.answers.length; i++) {
-    html += buildAnswer(problem.answers[i]);
+    html += buildAnswer(problem.answers[i], problemIndex, i);
   }
-  html += "</div>"
+  html += "</div>";
   // html += "</li>";
 
   return html;
@@ -46,23 +51,28 @@ var buildQuestion = function(problem) {
 
 var buildHTML = function(feedback) {
   var html = "";
-  // html += "<ol>";
+
   for (var i = 0; i < feedback.length; i++) {
-    html += buildQuestion(feedback[i]);
+    html += buildQuestion(feedback[i], i);
   }
-  // html += "</ol>";
 
   return html;
 };
 
 var init = function() {
-  var video = videos[0];
+  getData(function(data) {
+    var json = JSON.parse(data.response);
+    var video = json[0];
+    document.getElementById("video-player").src = video.link;
+    document.getElementById("title").innerHTML =
+      video.channel + " - " + video.title;
+    getData();
+    document.getElementById("questions").innerHTML = buildHTML(video.feedback);
+  });
+};
 
-  document.getElementById("video-player").src = video.link;
-  document.getElementById("title").innerHTML =
-    video.channel + " - " + video.title;
-
-  document.getElementById("questions").innerHTML = buildHTML(video.feedback);
+var submitAnswer = function(questionIndex, answerIndex) {
+  
 };
 
 if (typeof window.onload == "function") {
