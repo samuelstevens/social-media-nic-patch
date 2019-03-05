@@ -88,7 +88,7 @@ body {
 
 textarea {
   width: 100%;
-  min-height: 100vh;
+
   border: 0;
   resize: none;
   box-shadow: 0 1px 1px 0 rgba(60, 64, 67, 0.08),
@@ -99,6 +99,18 @@ textarea {
   font-size: 1.5em;
   font-weight: lighter;
   line-height: 1.5em;
+}
+
+.textarea-sm {
+  min-height: 50vh;
+}
+
+.textarea-md {
+  min-height: 75vh;
+}
+
+.textarea-lg {
+  min-height: 100vh;
 }
 
 hr {
