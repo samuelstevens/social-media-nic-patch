@@ -3,8 +3,6 @@
 // probably want to get this from a server somewhere
 // https://raw.githubusercontent.com/samuelstevens/social-media-nic-patch/master/api/videos/data.json
 
-var answers = [];
-
 var getData = function(callback) {
   // var request = new XMLHttpRequest();
   //
@@ -33,6 +31,11 @@ var getData = function(callback) {
       link: "https://www.youtube-nocookie.com/embed/sNhhvQGsMEc",
       channel: "Kurzgesagt",
       title: "The Fermi Paradox"
+    },
+    {
+      link: "https://www.youtube-nocookie.com/embed/vo4pMVb0R6M",
+      channel: "CrashCourse",
+      title: "Intro to Psychology"
     }
   ];
 
@@ -42,7 +45,7 @@ var getData = function(callback) {
 var init = function() {
   getData(function(data) {
     // need to pick different index
-    var video = data[1];
+    var video = data[Math.floor(Math.random() * data.length)];;
 
     document.getElementById("video-player").src = video.link;
     document.getElementById("title").innerHTML =
