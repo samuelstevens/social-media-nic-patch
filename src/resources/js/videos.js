@@ -28,35 +28,56 @@ var getData = function(callback) {
       title: "Optimistic Nihilism"
     },
     {
+      link: "https://www.youtube-nocookie.com/embed/vo4pMVb0R6M",
+      channel: "CrashCourse",
+      title: "Intro to Psychology"
+    },
+    {
       link: "https://www.youtube-nocookie.com/embed/sNhhvQGsMEc",
       channel: "Kurzgesagt",
       title: "The Fermi Paradox"
     },
     {
-      link: "https://www.youtube-nocookie.com/embed/vo4pMVb0R6M",
-      channel: "CrashCourse",
-      title: "Intro to Psychology"
+      link: "https://www.youtube-nocookie.com/embed/ft3vTaYbkdE",
+      channel: "minutephysics",
+      title: "How To Stop Structures from Shaking"
+    },
+    {
+      link: "https://www.youtube-nocookie.com/embed/3MqYE2UuN24",
+      channel: "minutephysics",
+      title: "Is It Better to Walk or Run in the Rain?"
     }
   ];
 
   callback(responseJson);
 };
 
-var init = function() {
-  getData(function(data) {
-    // need to pick different index
-    var video = data[Math.floor(Math.random() * data.length)];;
+var data = [];
+var currentIndex = 0;
 
-    document.getElementById("video-player").src = video.link;
-    document.getElementById("title").innerHTML =
-      video.channel + " - " + video.title;
+var setVideo = function(index) {
+  var video = data[index];
+
+  document.getElementById("video-player").src = video.link;
+  document.getElementById("title").innerHTML =
+    video.channel + " - " + video.title;
+};
+
+var incrementVideo = function() {
+  currentIndex += 1;
+  if (currentIndex >= data.length) {
+    currentIndex = 0;
+  }
+
+  setVideo(currentIndex);
+};
+
+var init = function() {
+  getData(function(newData) {
+    data = newData;
+    currentIndex = Math.floor(Math.random() * data.length);
+    setVideo(currentIndex);
   });
 };
 
-if (typeof window.onload == "function") {
-  var oldOnload = window.onload;
-  window.onload = function() {
-    oldOnload();
-    init();
-  };
-}
+addLoadEvent(init);

@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Meditating</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Meditating</title>
     <link rel="stylesheet" href="/resources/css/site.css" />
     <link rel="stylesheet" href="/resources/css/bootstrap-grid.min.css" />
     <script type="text/javascript" src="/resources/js/site.js"></script>
@@ -21,7 +21,11 @@
     </nav>
     <div class="container">
       <div class="row">
+        <div class="col-md-3 col-12 top-buffer">
+          <a href="/medium">&#x25c0; All Medium Activities</a>
+        </div>
         <div class="col text-center"><h1>Meditating</h1></div>
+        <div class="col-md-3"></div>
       </div>
       <div class="row">
         <div class="col-md-2"></div>
@@ -52,11 +56,27 @@
             but there are more resources at the bottom of the
             <a href="#resources">page</a>.
           </p>
+          <p class="main-text d-md-none">
+            If you have the HeadSpace app, just click
+            <a href="headspace://">here</a>.
+          </p>
+          <hr/>
+          <h2>Intro to Meditation</h2>
+          <p>
+            (Disclaimer: I'm not an expert at meditation)
+          </p>
+          <p class="main-text">
+            In this practice, you will hear 3 tones. The first one will ring when you start, the second after 30 seconds, and the third at the end of the practice (3 minutes).
+          </p>
+          <p class="main-text">
+            In this practice, you will hear 3 tones. The first one will ring when you start, the second after 30 seconds, and the third at the end of the practice (3 minutes).
+          </p>
           <div id="meditation-app">
             <div class="play-button-container">
               <div class="play-button-icon play" id="play-button"></div>
             </div>
           </div>
+          <p id="p-time"></p>
           <hr />
           <h2 id="resources">More Resources</h2>
           <p class="main-text">
@@ -71,16 +91,40 @@
       </div>
     </div>
     <script>
+      var playTime = 0;
+      var playing = false;
+
       var playButton = document.getElementById("play-button");
+      var timeElement = document.getElementById("p-time");
+
+      var audio = new Audio("/resources/audio/tone.mp3");
+
       playButton.onclick = function() {
-        if (playButton.className === "play-button-icon pause") {
+        if (playing || playButton.className === "play-button-icon pause") {
           // PAUSE
           playButton.className = "play-button-icon play";
+          playing = false;
+          if(!audio.paused) {
+            audio.pause()
+          }
         } else {
+          // PLAY
           playButton.className = "play-button-icon pause";
-          // PAUSE
+          playing = true;
+          audio.play();
         }
       };
+
+      var incrementTimer = function() {
+        if (playing) {
+          playTime = playTime + 0.01;
+          playTime = Math.round(playTime * 100) / 100;
+
+          timeElement.innerHTML = playTime;
+        }
+      };
+
+      window.setInterval(incrementTimer, 10);
     </script>
   </body>
 </html>

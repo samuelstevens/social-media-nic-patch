@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Read a Book</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/resources/css/site.css" />
+    <link rel="stylesheet" href="/resources/css/bootstrap-grid.min.css" />
+    <script type="text/javascript" src="/resources/js/site.js"></script>
+    <style>
+      #increase-arrow {
+        position: absolute;
+        left: 50%;
+        top: 15%;
+        transform: translateX(-50%);
+      }
+
+      #decrease-arrow {
+        position: absolute;
+        left: 50%;
+        bottom: 15%;
+        transform: translateX(-50%);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="row header" style="margin: 0;">
+      <div class="col-md-1"></div>
+      <div class="col-md-auto">
+        <a href="/"><h1>The Bored Board</h1></a>
+      </div>
+      <div class="col-md-auto d-none d-md-block">
+        <a href="/medium"><h1 class="header-link">All Medium Activities</h1></a>
+      </div>
+      <div class="col-md-1"></div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-12 top-buffer">
+          <a href="/medium">&#x25c0; All Medium Activities</a>
+        </div>
+        <div class="col text-center">
+          <h1 id="title">Read a Book</h1>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col">
+          <p class="main-text">
+            If you have a physical book with you, try reading that for 10
+            minutes. Start the timer below and be distraction free for a couple
+            minutes.
+          </p>
+          <p class="main-text">
+            If you don't have a physical book, I recommend going back to the
+            <a href="/medium">other activities</a> and picking something else.
+          </p>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+
+      <div class="row bottom-buffer">
+        <div class="col"></div>
+        <div class="col-auto">
+          <div class="js-timer">
+            <div
+              class="arrow-up"
+              id="increase-arrow"
+              onclick="incrementTime()"
+            ></div>
+            <span
+              id="timer-text"
+              style="font-family: monospace; color: #8f0b18;"
+            >
+              0.1:00
+            </span>
+            <div
+              class="arrow-down"
+              id="decrease-arrow"
+              onclick="decrementTime()"
+            ></div>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row bottom-buffer">
+        <div class="col text-center">
+          <button class="button" onclick="start()" id="start-button">
+            Start Reading
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="/resources/js/timer.js"></script>
+    <script type="text/javascript" src="/resources/js/add.js"></script>
+    <script type="text/javascript" src="/resources/js/particles.js"></script>
+
+    <script>
+      var timerText = document.getElementById("timer-text");
+      var downArrow = document.getElementById("decrease-arrow");
+      var upArrow = document.getElementById("increase-arrow");
+      var startButton = document.getElementById("start-button");
+
+      var resolution = 60;
+      var minutes = Number(
+        timerText.innerHTML.slice(0, timerText.innerHTML.indexOf(":"))
+      );
+      var totalTime = minutes * 60;
+
+      var secondsLeft = totalTime;
+
+      var onStep = function(s, c) {
+        secondsLeft = Math.round(totalTime - c / resolution);
+        var minutes = Math.floor(secondsLeft / 60);
+        var seconds = secondsLeft - minutes * 60;
+        timerText.innerHTML =
+          (" " + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
+      };
+
+      var start = function() {
+        minutes = Number(
+          timerText.innerHTML.slice(0, timerText.innerHTML.indexOf(":"))
+        );
+        console.log(minutes);
+        totalTime = minutes * 60;
+        secondsLeft = totalTime;
+
+        doTimer(totalTime * 1000, resolution, onStep, explode);
+
+        upArrow.hidden = true;
+        downArrow.hidden = true;
+        startButton.hidden = true;
+      };
+
+      var incrementTime = function() {
+        minutes++;
+        timerText.innerHTML = (" " + minutes).slice(-2) + ":00";
+      };
+
+      var decrementTime = function() {
+        minutes--;
+        if (minutes < 1) {
+          minutes = 1;
+        }
+        timerText.innerHTML = (" " + minutes).slice(-2) + ":00";
+      };
+    </script>
+  </body>
+</html>
