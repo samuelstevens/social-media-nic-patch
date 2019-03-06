@@ -29,19 +29,14 @@
       <div class="col-md-auto">
         <a href="/"><h1>The Bored Board</h1></a>
       </div>
-      <div class="col-md-auto d-none d-md-block">
-        <a href="/medium"><h1 class="header-link">All Medium Activities</h1></a>
-      </div>
       <div class="col-md-1"></div>
     </nav>
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-12 top-buffer">
-          <a href="/medium">&#x25c0; All Medium Activities</a>
+          <a href="/long">&#x25c0; All Long Activities</a>
         </div>
-        <div class="col text-center">
-          <h1 id="title">Read a Book</h1>
-        </div>
+        <div class="col text-center"><h1 id="title">Read a Book</h1></div>
         <div class="col-md-3"></div>
       </div>
       <div class="row">
@@ -73,7 +68,7 @@
               id="timer-text"
               style="font-family: monospace; color: #8f0b18;"
             >
-              0.1:00
+              15:00
             </span>
             <div
               class="arrow-down"
@@ -119,6 +114,36 @@
           (" " + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);
       };
 
+      var randomOffset = function() {
+        return Math.random() * 50 - 50;
+      };
+
+      var density = 20;
+
+      var shootFirework = function(xFrac, yFrac, delay = 0) {
+        window.setTimeout(function() {
+          console.log(
+            window.innerWidth * xFrac + randomOffset(),
+            window.innerHeight * yFrac + randomOffset()
+          );
+          explode(
+            window.innerWidth * xFrac + randomOffset(),
+            window.innerHeight * yFrac + randomOffset(),
+            density
+          );
+        }, delay);
+      };
+
+      var onComplete = function(s, c) {
+        shootFirework(1 / 4, 1 / 4, 0);
+        shootFirework(2 / 4, 3 / 4, 100);
+        shootFirework(3 / 4, 2 / 4, 200);
+
+        shootFirework(1 / 4, 2 / 4, 400);
+        shootFirework(2 / 4, 3 / 4, 500);
+        shootFirework(3 / 4, 1 / 4, 600);
+      };
+
       var start = function() {
         minutes = Number(
           timerText.innerHTML.slice(0, timerText.innerHTML.indexOf(":"))
@@ -127,7 +152,7 @@
         totalTime = minutes * 60;
         secondsLeft = totalTime;
 
-        doTimer(totalTime * 1000, resolution, onStep, explode);
+        doTimer(totalTime * 1000, resolution, onStep, onComplete);
 
         upArrow.hidden = true;
         downArrow.hidden = true;

@@ -14,15 +14,13 @@
       <div class="col-md-auto">
         <a href="/"><h1>The Bored Board</h1></a>
       </div>
-      <div class="col-md-auto d-none d-md-block">
-        <a href="/short"><h1 class="header-link">All Short Activities</h1></a>
-      </div>
+
       <div class="col-md-1"></div>
     </nav>
     <div class="container">
       <div class="row">
         <div class="col-md-3 col-12 top-buffer">
-          <a href="/medium">&#x25c0; All Medium Activities</a>
+          <a href="/short">&#x25c0; All Short Activities</a>
         </div>
         <div class="col text-center"><h1>Meditating</h1></div>
         <div class="col-md-3"></div>
@@ -60,16 +58,18 @@
             If you have the HeadSpace app, just click
             <a href="headspace://">here</a>.
           </p>
-          <hr/>
+          <hr />
           <h2>Intro to Meditation</h2>
-          <p>
-            (Disclaimer: I'm not an expert at meditation)
+          <p>(Disclaimer: I'm not an expert at meditation)</p>
+          <p class="main-text">
+            In this practice, you will hear 3 tones. The first one will ring
+            when you start, the second after 30 seconds, and the third at the
+            end of the practice (3 minutes).
           </p>
           <p class="main-text">
-            In this practice, you will hear 3 tones. The first one will ring when you start, the second after 30 seconds, and the third at the end of the practice (3 minutes).
-          </p>
-          <p class="main-text">
-            In this practice, you will hear 3 tones. The first one will ring when you start, the second after 30 seconds, and the third at the end of the practice (3 minutes).
+            In this practice, you will hear 3 tones. The first one will ring
+            when you start, the second after 30 seconds, and the third at the
+            end of the practice (3 minutes).
           </p>
           <div id="meditation-app">
             <div class="play-button-container">
@@ -104,8 +104,8 @@
           // PAUSE
           playButton.className = "play-button-icon play";
           playing = false;
-          if(!audio.paused) {
-            audio.pause()
+          if (!audio.paused) {
+            audio.pause();
           }
         } else {
           // PLAY
