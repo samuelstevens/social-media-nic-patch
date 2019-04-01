@@ -7,8 +7,16 @@
     <link rel="stylesheet" href="/resources/css/site.css" />
     <link rel="stylesheet" href="/resources/css/bootstrap-grid.min.css" />
 
-    <link rel="apple-touch-icon" sizes="120x120" href="/resources/img/icon/icon@2x.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/resources/img/icon/icon@3x.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/resources/img/icon/icon@2x.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/resources/img/icon/icon@3x.png"
+    />
   </head>
   <body>
     <nav class="row header" style="margin: 0;">
@@ -146,21 +154,25 @@
     </div>
 
     <script>
-      var shortActivities = ["", "/meditation"];
-      var mediumActivities = ["", "/reading", "/videos"];
-      var longActivities = ["", "/journaling"];
+      var onload = function() {
+        var shortActivities = ["", "/meditation"];
+        var mediumActivities = ["", "/reading", "/videos"];
+        var longActivities = ["", "/journaling"];
 
-      document.getElementById("short").href =
-        "/short" +
-        shortActivities[Math.floor(Math.random() * shortActivities.length)];
+        document.getElementById("short").href =
+          "/short" +
+          shortActivities[Math.floor(Math.random() * shortActivities.length)];
 
-      document.getElementById("medium").href =
-        "/medium" +
-        mediumActivities[Math.floor(Math.random() * mediumActivities.length)];
+        document.getElementById("medium").href =
+          "/medium" +
+          mediumActivities[Math.floor(Math.random() * mediumActivities.length)];
 
-      document.getElementById("long").href =
-        "/long" +
-        longActivities[Math.floor(Math.random() * longActivities.length)];
+        document.getElementById("long").href =
+          "/long" +
+          longActivities[Math.floor(Math.random() * longActivities.length)];
+      };
+
+      // window.onload = onload;
     </script>
   </body>
 </html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wikipedia</title>
+    <link rel="stylesheet" href="/resources/css/site.css" />
+    <link rel="stylesheet" href="/resources/css/bootstrap-grid.min.css" />
+    <script type="text/javascript" src="/resources/js/site.js"></script>
+  </head>
+  <body>
+    <nav class="row header" style="margin: 0;">
+      <div class="col-md-1"></div>
+      <div class="col-md-auto">
+        <a href="/"><h1>The Bored Board</h1></a>
+      </div>
+
+      <div class="col-md-1"></div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-12 top-buffer">
+          <a href="/short">&#x25c0; All Short Activities</a>
+        </div>
+        <div class="col text-center"><h1>Wikipedia</h1></div>
+        <div class="col-md-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col">
+          <p class="main-text">
+            Wikipedia is pretty cool. There's a lot of information on there. A
+            lot of <em>accurate</em> information, despite the online
+            encyclopedia's reputation.
+          </p>
+          <p class="main-text">
+            It can be a bit intimidating: how do you start reading the
+            encyclopedia?
+          </p>
+          <p class="main-text">
+            By using Wikipedia's
+            <a href="https://en.wikipedia.org/wiki/Wikipedia:Random">random</a>
+            page!
+          </p>
+
+          <div class="row top-buffer bottom-buffer">
+            <div class="col text-center">
+              <a
+                href="https://en.wikipedia.org/wiki/Special:Random"
+                class="button"
+              >
+                Let's Learn!
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+    <script src="/resources/js/wikidata-sdk.min.js"></script>
+    <script>
+      window.onload = function() {
+        // https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q571&format=json&languages=en&origin=* wikipedia:70:9
+
+        //
+
+        //https://en.wikipedia.org/w/api.php?action=query&list=random&rnlimit=5000&format=jsonfm
+
+        fetch(
+          "https://www.wikidata.org/w/api.php?action=query&list=random&format=json&rnnamespace=0&origin=*"
+        )
+          .then(res => res.json())
+          .then(json => {
+            var id = json.query.random[0].title;
+            console.log(id);
+            const url = wdk.getEntities({
+              ids: ["Q882099"],
+              languages: ["en"],
+              format: "json" // defaults to json
+            });
+
+            console.log(url);
+          });
+      };
+    </script>
+  </body>
+</html>
